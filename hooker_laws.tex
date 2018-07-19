@@ -1,0 +1,169 @@
+\documentclass[a4paper,14pt,extrafontsizes]{memoir}
+
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Linux Libertine O}
+%\setmainfont[Ligatures=TeX]{EB Garamond}
+%\usepackage{tgpagella}
+%\usepackage{libertine}
+%\usepackage{ebgaramond}
+
+%\usepackage[showframe]{geometry}
+
+\usepackage[plainpages=false,pdfpagelabels,bookmarksnumbered]{hyperref}
+\usepackage{memhfixc}  % adjustment for using hyperref in memoir class
+\usepackage{amsmath}
+%\usepackage[french]{babel}
+%\usepackage{etoolbox}
+\usepackage{amssymb}
+
+\DisemulatePackage{setspace}
+\usepackage{setspace}
+
+%\usepackage[protrusion=true,expansion=true]{microtype}  % after loading fonts
+
+\settrimmedsize{11in}{210mm}{*}
+\setlength{\trimtop}{0pt}
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+\settypeblocksize{8.75in}{33pc}{*}
+\setulmargins{3.6cm}{*}{*}  % smaller value makes header higher
+%\setlrmargins{0.5in}{*}{0.5}
+%\setulmarginsandblock{1.0in}{*}{1.0}
+\setlrmarginsandblock{1.2in}{*}{1.5}
+\setmarginnotes{0pt}{0pt}{\onelineskip}  % changed by Pengcheng, no margin
+%\setheadfoot{\onelineskip}{2\onelineskip}
+\setheadfoot{\onelineskip}{\onelineskip}
+%\setheaderspaces{*}{2\onelineskip}{*}
+\setheaderspaces{*}{\onelineskip}{*} % changed by Pengcheng
+\addtolength{\textwidth}{15pt}     %  increase text width
+\addtolength{\foremargin}{-15pt}
+\checkandfixthelayout
+
+%\renewcommand{\baselinestretch}{1.1}
+\setstretch{1.1}
+
+
+%\chapterstyle{section}
+\chapterstyle{crosshead}
+%\chapterstyle{thatcher}
+
+% page style of Oxford Classical Texts 
+\makepagestyle{ocd}
+\makeevenhead{ocd}{\thepage}{Of the Laws of Ecclesiastical Polity}{}  
+\makeoddhead{ocd}{}{\rightmark}{\thepage}
+\makeevenfoot{ocd}{}{}{}
+\makeoddfoot{ocd}{}{}{}
+
+% set \leftmark to part name and \rightmark to chapter name	
+\makepsmarks{ocd}{%
+  \nouppercaseheads
+  \createmark{part}{left}{nonumber}{}{. \space}
+  \createmark{chapter}{right}{nonumber}{}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  centered section title
+%%  adapted from the memoir document, p.96
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\shortcenter}[1]{%
+  \sethangfrom{\noindent ##1}%
+  \normalfont\Large\boldmath\bfseries
+  \centering
+  \parbox{4.5in}{\centering #1}\par}
+\setsecheadstyle{\shortcenter}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Set \vin which is a short hand of \hspace{\vgap}, default value
+%%  of \vgap is 1.5em
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\vgap}{1em}
+\setlength{\vrightskip}{-2em} % distance of line number from right margin
+
+%\usepackage{indentfirst}  % add indentation to first line of each chapter
+
+%% remove first blank page
+%\usepackage{atbegshi}   % http://ctan.org/pkg/atbegshi
+%\AtBeginDocument{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
+
+
+%% PRL style seperator between paragraphs
+\newcommand{\PRLsep}
+{\noindent\makebox[\linewidth]{\resizebox{0.3333\linewidth}{1pt}
+{$\blacklozenge$}}\bigskip}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    front matter
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+%\maketitle
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\cleardoublepage
+\pagestyle{empty}
+%\null\vfil  % use this will cause a blank page at the beginning
+\begin{center}
+  \LARGE{RICHARD HOOKER} \par \vspace{1.2in} 
+  \HUGE{Of the Laws} \par \vspace{0.2in}
+  \HUGE{of} \par \vspace{0.2in}
+  \HUGE{Ecclesiastical Polity} \par \vspace{1.5in}
+  \LARGE{Volume I}  \par \vspace{0.2in}
+  \LARGE{Preface \& Books 1-4}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\pagenumbering{roman}
+\pagestyle{headings}
+\tableofcontents*   % no self-reference (in memoir class)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    main matter
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+\pagenumbering{arabic}
+\pagestyle{ocd}
+
+\include{preface}
+\include{book1}
+\include{book2}
+\include{book3}
+\include{book4}
+\include{book5}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    back matter
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\cleardoublepage
+\pagestyle{empty}
+\null\vfil
+
+\begin{adjustwidth}{1in}{1in}
+\begin{center}
+{\Large\textsf{Colophon}}
+\end{center}
+\begin{center}
+  This document was typeset using the xeTeX typesetting system
+  and the memoir class. The body text is set to 14pt on a
+  33pc measure with Linux Libertine. The text was taken from the
+  Online Library of Liberty
+  (\url{http://oll.libertyfund.org/titles/hooker-the-works-of-richard-hooker-vol-1}).
+\end{center}
+\end{adjustwidth}
+%\addcontentsline{toc}{chapter}{Colophon}  % add Colophon to ToC
+\phantomsection \addcontentsline{toc}{chapter}{Colophon}  % add Colophon to ToC
+
+\vfil
+
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

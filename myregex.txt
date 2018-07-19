@@ -1,0 +1,17 @@
+BOOK II\. Ch\. [iv]+\. [0-9]\.
+BOOK III\. Ch\. [ivx]+\. [12]?[0-9], [12]?[0-9]\.
+BOOK III\. Ch\. [ivx]+\. [12]?[0-9]\.
+
+\[3[0-9][0-9]\]
+
+To clean text from html:
+
+1. remove "BOOK I ..." using regex
+
+2. remove e.g. [312] using regex
+
+3. replace [1-9]([,;:?]) by \1
+
+4. remove footnote numbers 1,2,... using vim
+
+
