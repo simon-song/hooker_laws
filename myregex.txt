@@ -10,8 +10,8 @@ To clean text from html:
 
 2. remove e.g. [312] using regex
 
-3. replace [1-9]([,;:?]) by \1
-
+3. replace digit (from 1 to 9) followed by white space or punctuation, i.e. replace [1-9]([,;:.? ]) by \1
+    
 4. remove footnote numbers 1,2,... using vim
 
 
