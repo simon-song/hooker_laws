@@ -1,9 +1,16 @@
 \documentclass[a4paper,14pt,extrafontsizes]{memoir}
 
 \usepackage{fontspec}
-\setmainfont[Ligatures=TeX]{Linux Libertine O}
-%\setmainfont[Ligatures=TeX]{Minion Pro}
+%\setmainfont[Ligatures=TeX]{Linux Libertine O}
+%\setmainfont[Ligatures=TeX]{Palatino} % not available on Windows
+%\setmainfont[Ligatures=TeX]{Palatino Linotype} % name on Windows
+%\setmainfont[Ligatures=TeX]{Domitian}
+%\setmainfont[Ligatures=TeX]{Minion Pro} % not working on Windows
+\setmainfont[Ligatures=TeX]{MinionPro-Regular.otf}  % OK on Windows
+%\setmainfont[Ligatures=TeX]{MinionPro-Medium.otf}  % OK on Windows
+%\setmainfont[Ligatures=TeX]{AGaramondPro-Regular.otf}  % OK on Windows
 %\setmainfont[Ligatures=TeX]{EB Garamond}
+%\setmainfont[Ligatures=TeX]{TeX Gyre Pagella} 
 %\usepackage{tgpagella}
 %\usepackage{libertine}
 %\usepackage{ebgaramond}
@@ -50,19 +57,21 @@
 \chapterstyle{crosshead}
 %\chapterstyle{thatcher}
 
-% page style of Oxford Classical Texts 
+% page style definition: ocd
 \makepagestyle{ocd}
-\makeevenhead{ocd}{\thepage}{Of the Laws of Ecclesiastical Polity}{}  
+%\makeevenhead{ocd}{\thepage}{Of the Laws of Ecclesiastical Polity}{}  
+\makeevenhead{ocd}{\thepage}{\leftmark}{}  
 \makeoddhead{ocd}{}{\rightmark}{\thepage}
 \makeevenfoot{ocd}{}{}{}
 \makeoddfoot{ocd}{}{}{}
 
-% set \leftmark to part name and \rightmark to chapter name	
-\makepsmarks{ocd}{%
-  \nouppercaseheads
-  \createmark{part}{left}{nonumber}{}{. \space}
-  \createmark{chapter}{right}{nonumber}{}{}
-}
+% % set \leftmark to part name and \rightmark to chapter name	
+% \makepsmarks{ocd}{%
+%   \nouppercaseheads
+%   \createmark{part}{left}{nonumber}{}{. \space}
+%   %\createmark{chapter}{right}{nonumber}{}{}
+%   \createmark{section}{right}{nonumber}{}{}
+% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  centered section title
