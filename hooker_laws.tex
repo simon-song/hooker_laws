@@ -1,4 +1,8 @@
 \documentclass[a4paper,14pt,extrafontsizes]{memoir}
+%\documentclass[b5paper,12pt,extrafontsizes]{memoir}  % b5paper not working
+%\documentclass[a4paper,17pt,extrafontsizes]{memoir}
+%\documentclass[letterpaper,10pt,extrafontsizes]{memoir} % used by memman.tex, tiny font
+%\documentclass[a4paper,extrafontsizes]{memoir}
 
 \usepackage{fontspec}
 %\setmainfont[Ligatures=TeX]{Linux Libertine O}
@@ -7,6 +11,12 @@
 %\setmainfont[Ligatures=TeX]{Domitian}
 %\setmainfont[Ligatures=TeX]{Minion Pro} % not working on Windows
 %\setmainfont[Ligatures=TeX]{Minion 3}   % from adobe
+%\setmainfont{Minion3-Regular.otf}[
+%  Ligatures=TeX,
+%  BoldFont=Minion3-Bold.otf,
+%  ItalicFont=Minion3-Italic.otf,
+%  BoldItalicFont=Minion3-BoldItalic.otf
+%]  % OK on Windows 
 %\setmainfont[Ligatures=TeX]{Minion3-Regular.otf}   % OK on Windows
 %\setmainfont[Ligatures=TeX]{MinionPro-Regular.otf}  % OK on Windows
 %\setmainfont[Ligatures=TeX]{MinionPro-Medium.otf}  % OK on Windows
@@ -15,10 +25,45 @@
 %\setmainfont[Ligatures=TeX]{EB Garamond}
 %\setmainfont[Ligatures=TeX]{TeX Gyre Pagella} 
 %\setmainfont[Ligatures=TeX]{Etbb} 
-\setmainfont[Ligatures=TeX]{Etbb-Regular.otf} % inspired by Edward Tufte’s ET-Bembo family
+%\setmainfont[Ligatures=TeX]{Etbb-Regular.otf} % inspired by Edward Tufte’s ET-Bembo family
+%\setmainfont{Etbb-Regular.otf}[
+%  Ligatures=TeX,
+%  BoldFont=Etbb-Bold.otf,
+%  ItalicFont=Etbb-Italic.otf,
+%  BoldItalicFont=Etbb-BoldItalic.otf
+%]  % OK on Windows 
+\setmainfont{RialtodF-PiccoloRegular.ttf}[
+  Ligatures=TeX,
+  BoldFont=RialtodF-PiccoloBold.ttf,
+  ItalicFont=RialtodF-PiccoloItalic.ttf,
+  BoldItalicFont=RialtodF-PiccoloBoldItalic.ttf
+]  % OK on Windows 
 %\usepackage{tgpagell}
 %\usepackage{libertine}
 %\usepackage{ebgaramond}
+
+%% set greek to a different font as rialto does not support greek
+\newfontfamily{\latinfont}{RialtodF-PiccoloRegular.ttf}[
+  BoldFont=RialtodF-PiccoloBold.ttf,
+  ItalicFont=RialtodF-PiccoloItalic.ttf,
+  BoldItalicFont=RialtodF-PiccoloBoldItalic.ttf
+]  % OK on Windows 
+%\newfontfamily{\greekfont}{CMU Serif}  % not working
+%\newfontfamily{\greekfontsf}{CMU Sans Serif}
+%\newfontfamily{\greekfont}{Linux Libertine O}[Scale=MatchUppercase]
+\newfontfamily{\greekfont}{Minion3-Regular.otf}[Scale=MatchUppercase]   % OK on Windows
+%\newfontfamily{\greekfont}{GFSPorson.otf}[Scale=MatchUppercase]
+
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+%\setotherlanguages{greek}
+
+%\usepackage[Greek]{ucharclasses}
+\usepackage[Latin,Greek,Hebrew,Cyrillic]{ucharclasses}
+\setTransitionsForLatin{\latinfont}{}
+%\setTransitionsFor{Greek}{\begingroup\greekfont}{\endgroup} % not working
+\setTransitionsForGreek{\greekfont}{}
+
 
 %\newfontfamily\g{GFSPorson.ttf}
 
@@ -30,12 +75,16 @@
 %\usepackage[french]{babel}
 %\usepackage{etoolbox}
 \usepackage{graphicx,amssymb} % \blacklozenge
+\usepackage{csquotes}  % for \blockquote
+%\renewcommand{\mkbegdispquote}[2]{\itshape}
+%\AtBeginEnvironment{quote}{\itshape}  % use italic for quote
 
 \DisemulatePackage{setspace}
 \usepackage{setspace}
 
 %\usepackage[protrusion=true,expansion=true]{microtype}  % after loading fonts
 
+%% geometry adjustment: for a4paper
 \settrimmedsize{11in}{210mm}{*}
 \setlength{\trimtop}{0pt}
 \setlength{\trimedge}{\stockwidth}
@@ -84,7 +133,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand*{\shortcenter}[1]{%
   \sethangfrom{\noindent ##1}%
-  \normalfont\Large\boldmath\bfseries
+  %\normalfont\Large\boldmath\bfseries
+  \normalfont\large\boldmath\bfseries
   \centering
   \parbox{4.5in}{\centering #1}\par}
 \setsecheadstyle{\shortcenter}
